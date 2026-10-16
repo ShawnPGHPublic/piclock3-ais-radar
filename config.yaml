@@ -1,0 +1,48 @@
+# Defaults, and the whole list of settings a config or a theme may set.
+# A name that is not here is not a setting.
+
+# which kind this is.  A theme reaches every instance at once with
+# kind-settings: ais-radar:
+kind: ais-radar
+
+# the shore point.  Braces are filled in, so a clock that already knows
+# where it is can leave these and only set the bearing.
+latitude: '{location.latitude}'
+longitude: '{location.longitude}'
+
+# degrees true.  0 looks north.  The flat edge is the beach; the arc opens
+# this way, out over the water.
+bearing: 0
+
+# how far the arc reaches.  The caption prints this number and this unit.
+radius: 10
+radius-unit: mi
+
+# aishub polls https://data.aishub.net once a minute.
+# aisstream holds wss://stream.aisstream.io open while the page is showing.
+source: aishub
+
+# both resolve from the clock's ApiKeys.yaml.  A missing key draws the
+# scope and says so in the caption; it does not invent traffic.
+username: '{apikeys.aishub}'
+apikey: '{apikeys.aisstream}'
+
+# seconds.  AISHub returns nothing if asked more often than once a minute,
+# so a shorter number is raised to 60 for that source.
+refresh: 60
+
+# drop a target this many minutes after it was last heard.
+max-age: 10
+
+# closest targets kept when a busy strait would paint thousands.
+max-targets: 250
+
+# seconds for the beam to cross the half-circle.
+sweep: 6
+
+# type key above the arc.  false leaves only the arc and the caption.
+legend: false
+
+# caption height, as a fraction of the region, the same way every widget
+# sizes its text.  The widget is only the arc and this caption.
+font-size: 0.048

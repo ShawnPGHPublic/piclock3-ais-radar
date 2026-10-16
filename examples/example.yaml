@@ -1,0 +1,50 @@
+# A clock with the shoreline radar in it, from the top of a PiClock3 checkout:
+#
+#   python3 PyQtPiClock3.py plugins/AisRadar/examples/example.yaml
+#
+# The scope draws with no key.  The caption says so until ApiKeys.yaml has
+# an AISHub username or an AISStream key.  AISHub is one request a minute
+# and wants a receiver feeding their network.  AISStream is a free key from
+# https://aisstream.io .
+
+pages:
+  clock-page: {order: 0, layout: shore, theme: circuit}
+
+language: en
+
+location:
+  latitude: 51.126
+  longitude: 1.327
+  timezone: Europe/London
+
+# Uncomment once the file exists beside PyQtPiClock3.py.  A config that
+# includes a file that is not there will not start.
+#
+# apikeys: !include ApiKeys.yaml
+#
+# ApiKeys.yaml:
+#   aishub: YOUR_USERNAME
+#   aisstream: YOUR_KEY
+
+widgets:
+  clock: {plugin: PiClock3.AnalogClock, region: clock}
+  date:  {plugin: PiClock3.Date, region: date}
+
+  # plugin: names the folder this was cloned into.
+  # The region name is the one layouts/shore.yaml adds.  Make the widget
+  # larger or smaller by changing that region's width and height - fractions
+  # of the screen, the same way every other widget is sized.
+  ais:
+    plugin: plugins.AisRadar
+    region: radar
+    latitude: 51.126
+    longitude: 1.327
+    bearing: 150
+    radius: 18
+    radius-unit: mi
+    source: aishub
+    # source: aisstream
+    refresh: 60
+    font-size: 0.048
+
+logging-level: info

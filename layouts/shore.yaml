@@ -1,0 +1,22 @@
+name: Shore
+description: Shoreline radar on the left, clock on the right
+
+designed-for: '16:9'
+
+regions:
+
+  # new name.  A layout that ships with a plugin may add one, never replace
+  # one that already exists.
+  radar:  {left: 0.0, top: 0.0, width: 0.46, height: 1.0}
+
+  date:   {left: 0.46, right: 0.0, top: 0.0, height: 0.12, style: date}
+  clock:  {left: 0.52, width: 0.40, aspect: 1.0, vertical-center: 0.0}
+  bottom: {left: 0.46, right: 0.0, bottom: 0.0, height: 0.10, style: bottom}
+
+layout-style-settings:
+  date:
+    font-size: 0
+    qproperty-alignment: AlignCenter
+  bottom:
+    font-size: 0
+    qproperty-alignment: AlignCenter
