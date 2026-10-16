@@ -59,7 +59,7 @@ that is not showing closes the socket.
 From the top of a PiClock3 checkout:
 
 ```
-git clone https://github.com/you/piclock3-ais-radar plugins/AisRadar
+git clone https://github.com/ShawnPGHPublic/piclock3-ais-radar plugins/AisRadar
 python3 PyQtPiClock3.py plugins/AisRadar/examples/example.yaml
 ```
 
